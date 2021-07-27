@@ -3,7 +3,12 @@ const passport = require("passport");
 
 const router = express.Router();
 
-const { signup, signin, verify } = require("../controllers/userControllers");
+const {
+  signup,
+  signin,
+  verify,
+  userUpdate,
+} = require("../controllers/userControllers");
 
 const upload = require("../middleware/multer");
 
@@ -24,5 +29,7 @@ router.post(
 );
 
 router.post("/verify", verify);
+
+router.post("/verifying", userUpdate);
 
 module.exports = router;
