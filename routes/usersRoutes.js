@@ -1,8 +1,5 @@
 const express = require("express");
 const passport = require("passport");
-
-const router = express.Router();
-
 const {
   signup,
   signin,
@@ -10,8 +7,11 @@ const {
   userUpdate,
 } = require("../controllers/userControllers");
 
-const upload = require("../middleware/multer");
+const router = express.Router();
 
+const upload = require("../middleware/multer"); //Remove unused import
+
+//Remove unused code
 // router.param("userId", async (req, res, next, userId) => {
 //   const user = await fetchUser(userId, next);
 //   if (user) {

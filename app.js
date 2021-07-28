@@ -1,25 +1,27 @@
-//
 const express = require("express");
 const cors = require("cors");
+
+//Authentication
 const passport = require("passport");
 const { localStrategy, jwtStrategy } = require("./middleware/passport");
 
-//Routes
+//Route Imports
 const usersRoutes = require("./routes/usersRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 
-//Creat App Instence
 const app = express();
-app.use(express.json());
+
 app.use(cors());
+app.use(express.json());
+
+//Passport Middleware
 app.use(passport.initialize());
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-//routes
+//Routes
 app.use("/", usersRoutes); // we can use   app.use( usersRoutes); work the same
 app.use("/profile", profileRoutes);
-
 app.use("/media", express.static("media"));
 
 // Path not Found Middleware

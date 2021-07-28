@@ -1,6 +1,6 @@
 const express = require("express");
-const passport = require("passport");
-
+const passport = require("passport"); //Remove unused import
+const upload = require("../middleware/multer");
 const {
   profileUpdate,
   fetchProfiles,
@@ -8,10 +8,8 @@ const {
 
 const router = express.Router();
 
-const upload = require("../middleware/multer");
-
 router.get("/", fetchProfiles);
 
-router.post("/update", upload.single("image"), profileUpdate);
+router.post("/update", upload.single("image"), profileUpdate); // Change to put
 
 module.exports = router;

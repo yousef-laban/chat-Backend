@@ -2,12 +2,12 @@ module.exports = (sequelize, DataTypes) => {
   const Profile = sequelize.define("Profile", {
     fullName: {
       type: DataTypes.STRING,
-      defauleValue: "No Name",
+      defauleValue: "No Name", //defaultValue not defauleValue
     },
 
     gender: {
       type: DataTypes.STRING,
-      defauleValue: "No Gender",
+      defauleValue: "No Gender", //defaultValue not defauleValue
     },
 
     image: {
@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  // relation
   Profile.associate = (models) => {
     models.User.hasOne(Profile, {
       foreignKey: "userId", // change the column name frome ShopId tp shopId

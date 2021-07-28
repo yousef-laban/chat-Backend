@@ -11,12 +11,12 @@ module.exports = {
 
       fullName: {
         type: Sequelize.STRING,
-        defauleValue: "No Name",
+        defauleValue: "No Name", //defaultValue not defauleValue
       },
 
       gender: {
         type: Sequelize.STRING,
-        defauleValue: "No Gender",
+        defauleValue: "No Gender", //defaultValue not defauleValue
       },
 
       image: {

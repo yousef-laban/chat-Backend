@@ -1,6 +1,6 @@
 const { Profile } = require("../db/models");
 
-// const Profile = require("../db/models/Profile");
+// const Profile = require("../db/models/Profile"); //Remove unused import
 
 exports.fetchProfiles = async (req, res, next) => {
   try {
@@ -11,6 +11,7 @@ exports.fetchProfiles = async (req, res, next) => {
   }
 };
 
+//Rename to updateProfile
 exports.profileUpdate = async (req, res, next) => {
   try {
     if (req.file)
@@ -19,9 +20,9 @@ exports.profileUpdate = async (req, res, next) => {
     const foundProfile = await Profile.findOne({
       where: { userId: req.body.userId },
     });
-
+    //Rename to updatedProfile
     const newProfile = await foundProfile.update(req.body);
-    res.status(201).json(newProfile);
+    res.status(201).json(newProfile); //Change to res.status(204).end
   } catch (error) {
     next(error);
   }
