@@ -8,6 +8,7 @@ const { localStrategy, jwtStrategy } = require("./middleware/passport");
 const usersRoutes = require("./routes/usersRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const messageRoutes = require("./routes/messageRoutes");
+const groupRoutes = require("./routes/groupRoutes");
 
 //Creat App Instence
 const app = express();
@@ -21,6 +22,7 @@ passport.use(jwtStrategy);
 app.use("/", usersRoutes); // we can use   app.use( usersRoutes); work the same
 app.use("/profile", profileRoutes);
 app.use("/message", messageRoutes);
+app.use("/group", groupRoutes);
 
 app.use("/media", express.static("media"));
 
