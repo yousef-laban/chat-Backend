@@ -9,6 +9,16 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: {
+          args: [6],
+          msg: "Minimum password length is 6 characters",
+        },
+        notEmpty: {
+          args: [true],
+          msg: "Please enter a password",
+        },
+      },
     },
 
     email: {
@@ -22,6 +32,23 @@ module.exports = (sequelize, DataTypes) => {
 
     phoneNum: {
       type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isValidPhoneNo: function (value) {
+          if (!value) return value;
+
+          var regexp = /^[0-9]+$/;
+          var values = Array.isArray(value) ? value : [value];
+
+          values.forEach(function (val) {
+            if (!regexp.test(val)) {
+              throw new Error("Number only is allowed.");
+            }
+          });
+          return value;
+        },
+      },
     },
 
     verify: {
