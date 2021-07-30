@@ -12,12 +12,21 @@ module.exports = (sequelize, DataTypes) => {
   // relation
   Message.associate = (models) => {
     models.User.hasMany(Message, {
-      foreignKey: "userId", // change the column name frome ShopId tp shopId
+      foreignKey: "userId",
       allowNull: false,
     });
 
     Message.belongsTo(models.User, {
       foreignKey: "userId",
+    });
+
+    models.Group.hasMany(Message, {
+      foreignKey: "groupId",
+      allowNull: false,
+    });
+
+    Message.belongsTo(models.Group, {
+      foreignKey: "groupId",
     });
   };
 
