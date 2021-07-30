@@ -10,7 +10,7 @@ const {
 const jwt = require("jsonwebtoken");
 
 const mailgun = require("mailgun-js");
-const DOMAIN = "sandboxe13e2a94d24745c08f0b8135e4a82853.mailgun.org";
+const DOMAIN = "sandboxc77683475d7940a98259a9161772b036.mailgun.org";
 const mg = mailgun({ apiKey: MAILGUN_API_KEY, domain: DOMAIN });
 
 exports.signup = async (req, res, next) => {
@@ -44,7 +44,12 @@ exports.verify = async (req, res, next) => {
     subject: "Email Verification",
     html: `
     <h2>  Please Verify Your Email</h2>
+
+    <h3>Using The Website :</h3>
     <a href="http://localhost:3000/verify/${token}" ><button >Verify</button></a>
+
+    <h3>Using The App :</h3>
+    <a href="exp://192.168.1.66:19000" ><button >Verify</button></a>
     
     `,
   };
