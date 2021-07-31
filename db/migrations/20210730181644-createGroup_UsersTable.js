@@ -4,7 +4,7 @@ const { NOW } = require("sequelize");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Group_User", {
+    await queryInterface.createTable("Group_Users", {
       userId: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -30,6 +30,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Group_User");
+    await queryInterface.dropTable("Group_Users");
   },
 };
