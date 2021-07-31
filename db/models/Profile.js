@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   // relation
   Profile.associate = (models) => {
     models.User.hasOne(Profile, {
+      as: "profile",
       foreignKey: "userId", // change the column name frome ShopId tp shopId
     });
 
