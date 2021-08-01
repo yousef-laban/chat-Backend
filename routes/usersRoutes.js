@@ -8,6 +8,7 @@ const {
   signin,
   verify,
   userUpdate,
+  fetchAllUsers,
 } = require("../controllers/userControllers");
 
 const upload = require("../middleware/multer");
@@ -19,6 +20,7 @@ const upload = require("../middleware/multer");
 //     next();
 //   } else next({ message: "User Not found", status: 404 });
 // });
+router.get("/users", fetchAllUsers);
 
 router.post("/signup", signup);
 

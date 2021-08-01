@@ -5,11 +5,12 @@ module.exports = (sequelize, DataTypes) => {
   Group_User.associate = (models) => {
     models.User.belongsToMany(models.Group, {
       through: Group_User,
-      foreignKey: "groupId",
+      foreignKey: "userId",
     });
     models.Group.belongsToMany(models.User, {
       through: Group_User,
-      foreignKey: "userId",
+      foreignKey: "groupId",
+      as: "users",
     });
   };
 

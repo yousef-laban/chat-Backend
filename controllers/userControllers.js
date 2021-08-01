@@ -13,6 +13,28 @@ const mailgun = require("mailgun-js");
 const DOMAIN = "sandboxc77683475d7940a98259a9161772b036.mailgun.org";
 const mg = mailgun({ apiKey: MAILGUN_API_KEY, domain: DOMAIN });
 
+exports.fetchAllUsers = async (req, res, next) => {
+  try {
+    const foundUsers = await User.findAll({
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+
+      include: {
+        model: Profile,
+        as: "profile",
+
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "userId"],
+        },
+      },
+    });
+    res.json(foundUsers);
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.signup = async (req, res, next) => {
   try {
     req.body.password = await bcrypt.hash(req.body.password, 10);
