@@ -6,24 +6,7 @@ exports.fetchAllMessages = async (req, res, next) => {
   try {
     const allMessages = await Message.findAll({
       attributes: {
-        exclude: ["userId", "updatedAt"],
-      },
-
-      include: {
-        model: User,
-        as: "sender",
-
-        attributes: {
-          exclude: ["createdAt", "updatedAt", "password", "verify"],
-        },
-
-        include: {
-          model: Profile,
-          as: "profile",
-          attributes: {
-            exclude: ["createdAt", "updatedAt", "userId"],
-          },
-        },
+        exclude: ["updatedAt"],
       },
     });
     res.json(allMessages);
