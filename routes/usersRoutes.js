@@ -30,8 +30,8 @@ router.post(
   signin
 );
 
-router.post("/verify", verify);
+router.post("/verify", verify); // sends email
 
-router.post("/verifying", userUpdate);
+router.post("/verifying", userUpdate); // compare tokens
 
 module.exports = router;

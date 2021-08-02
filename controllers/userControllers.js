@@ -95,6 +95,7 @@ const generateToken = (user) => {
   return token;
 };
 
+// You have a typo
 const generateVeriftyToken = (user) => {
   const payload = {
     id: user.id,
@@ -110,6 +111,7 @@ const generateVeriftyToken = (user) => {
 
 exports.fetchUser = async (userId, next) => {
   try {
+    // REVIEW: If you're fetching a user, you need to exclude the password
     const foundUser = await User.findByPk(userId);
     return foundUser;
   } catch (error) {

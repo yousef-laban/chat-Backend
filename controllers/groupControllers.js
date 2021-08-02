@@ -30,6 +30,7 @@ exports.groupCreat = async (req, res, next) => {
 
     const newgroup = await Group.create(req.body);
 
+    // REVIEW: If done, remove extra clgs
     console.log(req.body);
 
     const groupUser = req.body.usersId.split(",").map((user) => ({
