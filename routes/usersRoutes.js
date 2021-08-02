@@ -13,6 +13,8 @@ const {
 
 const upload = require("../middleware/multer");
 
+// REVIEW: Remove commented out code
+
 // router.param("userId", async (req, res, next, userId) => {
 //   const user = await fetchUser(userId, next);
 //   if (user) {

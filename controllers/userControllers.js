@@ -17,6 +17,7 @@ exports.fetchAllUsers = async (req, res, next) => {
   try {
     const foundUsers = await User.findAll({
       attributes: {
+        // REVIEW: you need to exclude the password as well
         exclude: ["createdAt", "updatedAt"],
       },
 
@@ -110,6 +111,7 @@ const generateVeriftyToken = (user) => {
 
 exports.fetchUser = async (userId, next) => {
   try {
+    // REVIEW: you need to remove the password
     const foundUser = await User.findByPk(userId);
     return foundUser;
   } catch (error) {
@@ -119,6 +121,8 @@ exports.fetchUser = async (userId, next) => {
 
 exports.userUpdate = async (req, res, next) => {
   try {
+    // REVIEW: Don't pass the user ID through the body.
+    // It should come for req.user from the jwt strategy.
     const foundUser = await User.findByPk(req.body.id);
     await foundUser.update({ verify: "true" });
 

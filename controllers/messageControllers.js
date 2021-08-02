@@ -32,6 +32,7 @@ exports.fetchAllMessages = async (req, res, next) => {
   }
 };
 
+// Review: messageCreate not messageCreat
 exports.messageCreat = async (req, res, next) => {
   try {
     //   if (req.file)

@@ -1,5 +1,5 @@
 const { Profile } = require("../db/models");
-
+// REVIEW: Remove commented out code
 // const Profile = require("../db/models/Profile");
 
 exports.fetchProfiles = async (req, res, next) => {
